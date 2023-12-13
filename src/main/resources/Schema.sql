@@ -29,30 +29,18 @@ CREATE TABLE RESTAURANTE (
     "id_restaurante" VARCHAR(20) NOT NULL,
     "nombre" VARCHAR(30) NULL,
     "tipo_cocina" VARCHAR(30) NULL,
-    "direccion" VARCHAR(15) NULL,
+    "direccion" VARCHAR(30) NULL,
     "descripcion" VARCHAR(100) NULL,
     "calificacion" FLOAT(5) NULL,
     PRIMARY KEY ("id_restaurante")
 );
 
-            -- -----------------------------------------------------
--- Table "RESERVA_CONFIRMADA"
--- -----------------------------------------------------
-
-CREATE TABLE RESERVA_CONFIRMADA(
-    "id_reserva_confirmada" SERIAL NOT NULL,
-    "codigo_confirmacion" SERIAL NOT NULL,
-    "fecha_confirmacion" TIMESTAMP NULL,
-    "estado" BOOLEAN NULL,
-    PRIMARY KEY ("id_reserva_confirmada")
-);
 
     -- -----------------------------------------------------
 -- Table "RESERVA"
 -- -----------------------------------------------------
 CREATE Table RESERVA (
     "id_usuario" VARCHAR(20) NOT NULL,
-    "id_reserva" INT NOT NULL,
     "id_restaurante" VARCHAR(20) NOT NULL,
     "fecha_hora" TIMESTAMP NULL,
     "numero_comnsales" INT NULL,
@@ -64,9 +52,22 @@ CREATE Table RESERVA (
     CONSTRAINT "fk_RESERVA_RESTAURANTE1"
     FOREIGN KEY ("id_restaurante") REFERENCES RESTAURANTE ("id_restaurante")
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    FOREIGN KEY ("id_reserva") REFERENCES RESERVA_CONFIRMADA("id_reserva_confirmada")
+    ON UPDATE NO ACTION
     );
+
+                -- -----------------------------------------------------
+    -- Table "RESERVA_CONFIRMADA"
+    -- -----------------------------------------------------
+
+ CREATE TABLE RESERVA_CONFIRMADA (
+     id_reserva_confirmada SERIAL PRIMARY KEY,
+     id_usuario VARCHAR(20) NOT NULL,  -- Referencia a id_usuario en RESERVA
+     id_restaurante VARCHAR(20) NOT NULL,  -- Referencia a id_restaurante en RESERVA
+     codigo_confirmacion SERIAL NOT NULL,
+     fecha_confirmacion TIMESTAMP NULL,
+     FOREIGN KEY (id_usuario, id_restaurante) REFERENCES RESERVA (id_usuario, id_restaurante)
+ );
+
 
         -- -----------------------------------------------------
 -- Table "RESEÑA"
