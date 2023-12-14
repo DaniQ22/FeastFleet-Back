@@ -68,7 +68,6 @@ CREATE Table RESERVA (
      FOREIGN KEY (id_usuario, id_restaurante) REFERENCES RESERVA (id_usuario, id_restaurante)
  );
 
-
         -- -----------------------------------------------------
 -- Table "RESEÑA"
 -- -----------------------------------------------------
