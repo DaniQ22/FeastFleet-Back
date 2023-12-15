@@ -1,4 +1,4 @@
 package com.FeastFleet.FeastFleet.web.config;
 
-public class JWTtoken {
+public class JWTUtil {
 }
