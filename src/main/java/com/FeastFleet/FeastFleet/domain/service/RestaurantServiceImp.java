@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RestaurantServiceImp implements RestaurantServiceInter{
@@ -23,6 +24,11 @@ public class RestaurantServiceImp implements RestaurantServiceInter{
 
     @Override
     public Restaurant save(Restaurant restaurant) {
-        return null;
+        return restaurantRepositoryInter.save(restaurant);
+    }
+
+    @Override
+    public Optional<Restaurant> getById(String id) {
+        return restaurantRepositoryInter.getById(id);
     }
 }

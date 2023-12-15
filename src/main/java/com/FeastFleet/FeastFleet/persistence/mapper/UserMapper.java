@@ -23,6 +23,7 @@ public interface UserMapper {
     })
     User toUser(Usuario usuario);
     @InheritInverseConfiguration
+    @Mapping(target = "reservas", ignore = true)
     Usuario toUsuario(User user);
 
     List<User> toUser(List<Usuario> usuario);

@@ -18,7 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
-
+src/main/resources/application-dev.properties
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -34,4 +34,4 @@ build/
 
 ## database connection ##
 
-/src/main/resources/application-dev.properties
+

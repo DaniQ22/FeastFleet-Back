@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class RestaurantRepository implements RestaurantRepositoryInter {
@@ -19,7 +20,6 @@ public class RestaurantRepository implements RestaurantRepositoryInter {
     @Autowired
     public RestaurantRepository(RestaurantMapper restaurantMapper, RestauranteCrud restauranteCrud) {
         this.restaurantMapper = restaurantMapper;
-
         this.restauranteCrud = restauranteCrud;
     }
 
@@ -28,4 +28,17 @@ public class RestaurantRepository implements RestaurantRepositoryInter {
         List<Restaurante> restaurantes = restauranteCrud.findAll();
         return restaurantMapper.toRestaurants(restaurantes);
     }
+
+    @Override
+    public Restaurant save(Restaurant restaurant) {
+        Restaurante restaurante = restaurantMapper.toRestaurante(restaurant);
+        return restaurantMapper.toRestaurant(restauranteCrud.save(restaurante));
+    }
+
+    @Override
+    public Optional<Restaurant> getById(String id) {
+        return restauranteCrud.findById(id).map(restaurantMapper::toRestaurant);
+    }
+
+
 }
