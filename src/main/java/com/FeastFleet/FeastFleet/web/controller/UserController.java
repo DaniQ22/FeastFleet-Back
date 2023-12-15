@@ -36,11 +36,13 @@ public class UserController {
     public ResponseEntity<Optional<User>> getById(@PathVariable String id){
         return ResponseEntity.ok(userServiceInter.getByID(id));
     }
+
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable String id){
         userServiceInter.delete(id);
     }
     @PutMapping("/update")
+
     public ResponseEntity<User> update(@RequestBody User user){
         return ResponseEntity.ok(this.userServiceInter.save(user));
     }
