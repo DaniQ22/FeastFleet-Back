@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImp implements UserServiceInter{
@@ -25,6 +26,19 @@ public class UserServiceImp implements UserServiceInter{
 
     @Override
     public User save(User user) {
-        return null;
+
+        return userRepositoryInter.save(user);
     }
+
+    @Override
+    public Optional<User> getByID(String id) {
+        return userRepositoryInter.getByID(id);
+    }
+
+    @Override
+    public void delete(String id) {
+        userRepositoryInter.delete(id);
+    }
+
+
 }
