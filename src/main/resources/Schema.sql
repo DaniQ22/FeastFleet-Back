@@ -40,16 +40,14 @@ CREATE TABLE RESTAURANTE (
 -- Table "RESERVA"
 -- -----------------------------------------------------
 CREATE Table RESERVA (
+    "id_reserva" SERIAL PRIMARY KEY,
     "id_usuario" VARCHAR(20) NOT NULL,
     "id_restaurante" VARCHAR(20) NOT NULL,
     "fecha_hora" TIMESTAMP NULL,
     "numero_comnsales" INT NULL,
-    PRIMARY KEY ("id_usuario", "id_restaurante"),
-    CONSTRAINT "fk_RESERVA_USUARIO1" 
     FOREIGN KEY("id_usuario") REFERENCES USUARIO ("id_usuario")
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-    CONSTRAINT "fk_RESERVA_RESTAURANTE1"
     FOREIGN KEY ("id_restaurante") REFERENCES RESTAURANTE ("id_restaurante")
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
@@ -60,28 +58,25 @@ CREATE Table RESERVA (
     -- -----------------------------------------------------
 
  CREATE TABLE RESERVA_CONFIRMADA (
-     id_reserva_confirmada SERIAL PRIMARY KEY,
-     id_usuario VARCHAR(20) NOT NULL,  -- Referencia a id_usuario en RESERVA
-     id_restaurante VARCHAR(20) NOT NULL,  -- Referencia a id_restaurante en RESERVA
+     "id_reserva_confirmada" SERIAL PRIMARY KEY,
+     "id_reserva" INT NOT NULL,
      codigo_confirmacion SERIAL NOT NULL,
      fecha_confirmacion TIMESTAMP NULL,
-     FOREIGN KEY (id_usuario, id_restaurante) REFERENCES RESERVA (id_usuario, id_restaurante)
+     FOREIGN KEY ("id_reserva") REFERENCES RESERVA ("id_reserva")
  );
 
         -- -----------------------------------------------------
 -- Table "RESEÑA"
 -- -----------------------------------------------------
 CREATE TABLE RESENA (
+    "id_reseña" SERIAL PRIMARY KEY,
     "id_usuario" VARCHAR(20) NOT NULL,
     "id_restaurante" VARCHAR(20) NOT NULL,
     "comentario" VARCHAR(100) NULL,
     "calificacion" FLOAT NULL,
-    PRIMARY KEY ("id_usuario", "id_restaurante"),
-    CONSTRAINT "fk_RESERVA_USUARIO1" 
     FOREIGN KEY("id_usuario") REFERENCES USUARIO ("id_usuario")
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-    CONSTRAINT "fk_RESERVA_RESTAURANTE1"
     FOREIGN KEY ("id_restaurante") REFERENCES RESTAURANTE ("id_restaurante")
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
