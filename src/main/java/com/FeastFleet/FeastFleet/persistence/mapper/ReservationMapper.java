@@ -13,7 +13,7 @@ import java.util.List;
 public interface ReservationMapper {
 
     @Mappings({
-            @Mapping(source = "id.idRestaurante", target = "idRestaurant"),
+            @Mapping(source = "idReserva", target = "idReservation"),
             @Mapping(source = "fecha", target = "date"),
             @Mapping(source = "numeroComensales", target = "comensNumber"),
 

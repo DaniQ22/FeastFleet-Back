@@ -15,10 +15,8 @@ public class ReservaConfirmada {
     @Column(name = "id_reserva_confirmada")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reservaConfirmadaId;
-    @Column(name = "id_usuario")
-    private String idUsuario;
-    @Column(name = "id_restaurante")
-    private String idRestaurante;
+    @Column(name = "id_reserva")
+    private Integer idReserva;
     @Column(name = "codigo_confirmacion")
     private Integer codigoConfirmacion;
     @Column(name = "fecha_confirmacion")
@@ -34,20 +32,12 @@ public class ReservaConfirmada {
         this.reservaConfirmadaId = reservaConfirmadaId;
     }
 
-    public String getIdUsuario() {
-        return idUsuario;
+    public Integer getIdReserva() {
+        return idReserva;
     }
 
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getIdRestaurante() {
-        return idRestaurante;
-    }
-
-    public void setIdRestaurante(String idRestaurante) {
-        this.idRestaurante = idRestaurante;
+    public void setIdReserva(Integer idReserva) {
+        this.idReserva = idReserva;
     }
 
     public Integer getCodigoConfirmacion() {
