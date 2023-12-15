@@ -11,9 +11,10 @@ import java.time.LocalDateTime;
 
 public class Reserva {
 
-    @EmbeddedId
-    private ReservaPK id;
-
+    @Id
+    @Column(name = "id_reserva")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idReserva;
     @Column(name = "fecha_hora")
     private LocalDateTime fecha;
     @Column(name = "numero_comnsales")
@@ -23,12 +24,13 @@ public class Reserva {
     @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
     private Usuario usuario;
 
-    public ReservaPK getId() {
-        return id;
+
+    public Integer getIdReserva() {
+        return idReserva;
     }
 
-    public void setId(ReservaPK id) {
-        this.id = id;
+    public void setIdReserva(Integer idReserva) {
+        this.idReserva = idReserva;
     }
 
     public LocalDateTime getFecha() {

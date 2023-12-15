@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 public class ReservationConfirm {
 
     private Integer confirmedReservationId;
-    private String usuarioId;
-    private String restaurantId;
+
+    private Integer reservationId;
     private Integer confirmatedCode;
     private LocalDateTime confirmatedDate;
 
@@ -21,20 +21,12 @@ public class ReservationConfirm {
         this.confirmedReservationId = confirmedReservationId;
     }
 
-    public String getUsuarioId() {
-        return usuarioId;
+    public Integer getReservationId() {
+        return reservationId;
     }
 
-    public void setUsuarioId(String usuarioId) {
-        this.usuarioId = usuarioId;
-    }
-
-    public String getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setRestaurantId(String restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setReservationId(Integer reservationId) {
+        this.reservationId = reservationId;
     }
 
     public Integer getConfirmatedCode() {

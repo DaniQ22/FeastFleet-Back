@@ -14,10 +14,9 @@ public interface ReservationConfirmMapper {
 
     @Mappings({
             @Mapping(source = "reservaConfirmadaId", target = "confirmedReservationId"),
-            @Mapping(source = "idUsuario", target = "usuarioId"),
-            @Mapping(source = "idRestaurante", target = "restaurantId"),
             @Mapping(source = "codigoConfirmacion", target = "confirmatedCode"),
             @Mapping(source = "fechaConfirmacion", target = "confirmatedDate"),
+            @Mapping(source = "idReserva", target = "reservationId")
     })
     ReservationConfirm toReservartionConfirm(ReservaConfirmada reservaConfirmada);
 

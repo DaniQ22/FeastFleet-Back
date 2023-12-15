@@ -1,24 +1,21 @@
 package com.FeastFleet.FeastFleet.domain.dto;
 
-import com.FeastFleet.FeastFleet.persistence.entity.ReservaPK;
-import com.FeastFleet.FeastFleet.persistence.entity.Usuario;
-
 
 import java.time.LocalDateTime;
 
 public class Reservation {
 
-    private String idRestaurant;
+    private Integer idReservation;
     private LocalDateTime date;
     private Integer comensNumber;
 
 
-    public String getIdRestaurant() {
-        return idRestaurant;
+    public Integer getIdReservation() {
+        return idReservation;
     }
 
-    public void setIdRestaurant(String idRestaurant) {
-        this.idRestaurant = idRestaurant;
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
     public LocalDateTime getDate() {
