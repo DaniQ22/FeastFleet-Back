@@ -24,6 +24,11 @@ public class MensajeChatGPT {
     private LocalDateTime fechaHora;
 
 
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
+    private Usuario usuario;
+
+
     public Integer getIdChat() {
         return idChat;
     }
@@ -54,5 +59,13 @@ public class MensajeChatGPT {
 
     public void setFechaHora(LocalDateTime fechaHora) {
         this.fechaHora = fechaHora;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

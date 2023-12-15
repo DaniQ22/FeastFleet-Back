@@ -6,21 +6,15 @@ import lombok.Setter;
 
 public class Review {
 
-    private String userId;
-
     private String restaurantId;
+
+    private String userId;
 
     private String comment;
 
     private double qualification;
 
-    public String getUserId() {
-        return userId;
-    }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     public String getRestaurantId() {
         return restaurantId;
@@ -44,5 +38,14 @@ public class Review {
 
     public void setQualification(double qualification) {
         this.qualification = qualification;
+    }
+
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

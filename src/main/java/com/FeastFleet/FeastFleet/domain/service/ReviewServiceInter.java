@@ -7,4 +7,6 @@ import java.util.List;
 public interface ReviewServiceInter {
 
     List<Review> getAll();
+
+    Review save(Review review);
 }

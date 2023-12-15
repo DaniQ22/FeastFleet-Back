@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -23,7 +25,12 @@ public class ReviewController {
     }
 
     @GetMapping("/geAll")
-    public ResponseEntity<List<Review>> getAll(){
+    public ResponseEntity<List<Review>> getAll() {
         return ResponseEntity.status(HttpStatus.OK).body(service.getAll());
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<?>  save(@RequestBody Review review){
+        return ResponseEntity.status(HttpStatus.OK).body(service.save(review));
     }
 }

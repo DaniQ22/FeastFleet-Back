@@ -9,14 +9,14 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {UserMapper.class, RestaurantMapper.class})
 public interface ReviewMapper {
 
     @Mappings({
-            @Mapping(source = "idResena.idUsuario", target ="userId" ),
             @Mapping(source = "idResena.idRestaurante", target ="restaurantId" ),
+            @Mapping(source = "idResena.idUsuario", target = "userId"),
             @Mapping(source = "comentario", target ="comment" ),
-            @Mapping(source = "calificacion", target ="qualification" ),
+            @Mapping(source = "calificacion", target ="qualification" )
 
     })
     Review toReviwe (Resena resena);
@@ -24,5 +24,9 @@ public interface ReviewMapper {
 
 
     @InheritInverseConfiguration
+    @Mappings({
+            @Mapping(target = "usuario", ignore = true),
+            @Mapping(target = "restaurante", ignore = true)
+    })
     Resena toResena (Review review);
 }

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.ScrollableResults;
 import org.hibernate.query.sql.internal.ParameterRecognizerImpl;
+import org.mapstruct.control.MappingControl;
 
 public class Preference {
     private int preferenceId;
@@ -11,6 +12,8 @@ public class Preference {
     private String userId;
 
     private String preference;
+
+    private User user;
 
 
     public int getPreferenceId() {
@@ -35,5 +38,13 @@ public class Preference {
 
     public void setPreference(String preference) {
         this.preference = preference;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

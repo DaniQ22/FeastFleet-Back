@@ -9,13 +9,14 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface PreferenceMapper {
 
     @Mappings({
             @Mapping(source = "idPreferencia", target = "preferenceId"),
             @Mapping(source = "idUsuario", target = "userId"),
-            @Mapping(source = "preferencia", target = "preference")
+            @Mapping(source = "preferencia", target = "preference"),
+            @Mapping(source = "usuario", target = "user")
     })
     Preference toPreference(Preferencia preferencias);
     List<Preference> toPreference (List<Preferencia> preferencias);

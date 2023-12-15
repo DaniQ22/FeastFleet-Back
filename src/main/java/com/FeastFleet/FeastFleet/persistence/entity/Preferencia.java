@@ -1,5 +1,6 @@
 package com.FeastFleet.FeastFleet.persistence.entity;
 
+import com.fasterxml.jackson.databind.ser.std.UUIDSerializer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,10 @@ public class Preferencia {
     private String idUsuario;
 
     protected  String preferencia;
+
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
+    private Usuario usuario;
 
     public Integer getIdPreferencia() {
         return idPreferencia;
@@ -41,5 +46,13 @@ public class Preferencia {
 
     public void setPreferencia(String preferencia) {
         this.preferencia = preferencia;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
