@@ -3,6 +3,7 @@ package com.FeastFleet.FeastFleet.web.controller;
 import com.FeastFleet.FeastFleet.domain.dto.Restaurant;
 import com.FeastFleet.FeastFleet.domain.service.RestaurantServiceInter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,22 +21,21 @@ public class RestaurantController {
     }
 
     @GetMapping("/all")
-    public List<Restaurant> getAll() {
-      return restaurantServiceInter.getAll();
+    public ResponseEntity<List<Restaurant>> getAll() {
+      return ResponseEntity.ok(restaurantServiceInter.getAll());
 
     }
 
     @GetMapping("/{id}")
-    public Optional<Restaurant> getById(@PathVariable String id){
-    return restaurantServiceInter.getById(id);
+    public ResponseEntity<Optional<Restaurant>> getById(@PathVariable String id){
+    return ResponseEntity.ok(restaurantServiceInter.getById(id));
     }
 
     @PostMapping("save")
-    public Restaurant save(@RequestBody Restaurant restaurant){
+    public ResponseEntity<Restaurant> save(@RequestBody Restaurant restaurant){
+    return ResponseEntity.ok(restaurantServiceInter.save(restaurant));
 
-    return restaurantServiceInter.save(restaurant);
     }
-
 
 
 }
