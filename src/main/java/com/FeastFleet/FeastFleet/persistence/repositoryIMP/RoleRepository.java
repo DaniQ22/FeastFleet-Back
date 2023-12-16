@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class RoleRepository implements RoleRepositoryInter {
@@ -33,5 +34,16 @@ public class RoleRepository implements RoleRepositoryInter {
     public Role save(Role role) {
         Rol rol = mapper.toRol(role);
         return mapper.toRole(rolCrud.save(rol));
+    }
+
+    @Override
+    public void delete(Integer roleId) {
+        rolCrud.deleteById(roleId);
+    }
+
+    @Override
+    public Optional<Role> getById(Integer roleId) {
+        Optional<Rol> rolOptional = rolCrud.findById(roleId);
+        return rolOptional.map(rol -> mapper.toRole(rol));
     }
 }

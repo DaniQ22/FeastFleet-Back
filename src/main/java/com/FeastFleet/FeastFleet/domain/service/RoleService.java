@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RoleService implements RoleServiceInter{
@@ -32,5 +33,21 @@ public class RoleService implements RoleServiceInter{
         }else {
             throw new MessageException("Error, asegurate que los campos no esten vacidos");
         }
+    }
+
+    @Override
+    public void delete(Integer roleId) {
+
+        Optional<Role> role = repository.getById(roleId);
+        if (role.isPresent()){
+            repository.delete(roleId);
+        }else{
+            throw  new MessageException("No se puede eliminar este rol");
+        }
+    }
+
+    @Override
+    public Optional<Role> getById(Integer roleId) {
+        return repository.getById(roleId);
     }
 }

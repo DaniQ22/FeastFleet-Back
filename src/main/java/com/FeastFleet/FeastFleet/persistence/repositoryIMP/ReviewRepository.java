@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ReviewRepository implements ReviewRepositoryInter {
@@ -32,7 +33,18 @@ public class ReviewRepository implements ReviewRepositoryInter {
     @Override
     public Review save(Review review) {
         Resena resena = mapper.toResena(review);
-        return mapper.toReviwe(resena);
+        return mapper.toReviwe(crud.save(resena));
+    }
+
+    @Override
+    public Optional<Review> getById(Integer reviewId) {
+        Optional<Resena> resena = crud.findById(reviewId);
+        return resena.map(rev -> mapper.toReviwe(rev));
+    }
+
+    @Override
+    public void delete(Integer reviewId) {
+        crud.deleteById(reviewId);
     }
 
 }
