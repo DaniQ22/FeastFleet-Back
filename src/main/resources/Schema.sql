@@ -1,6 +1,28 @@
     -- -----------------------------------------------------
 -- Table "ROL"
 -- -----------------------------------------------------
+CREATE TABLE CATEGORIA(
+"id_categoria" SERIAL PRIMARY KEY,
+"nombre_categoria" VARCHAR(50)  NULL,
+ "descripcion" VARCHAR(100) NULL
+ );
+
+    -- -----------------------------------------------------
+ -- Table "RESTAURANTE_CATEGORIA"
+ -- -----------------------------------------------------
+ CREATE TABLE RESTAURANTE_CATEGORIA (
+ "id_categoria" INT NOT NULL,
+ "id_restaurante" VARCHAR NOT NULL,
+ PRIMARY KEY ("id_categoria", "id_restaurante"),
+ FOREIGN KEY ("id_categoria") REFERENCES CATEGORIA ("id_categoria"),
+ FOREIGN KEY ("id_restaurante") REFERENCES RESTAURANTE ("id_restaurante")
+
+ );
+
+
+    -- -----------------------------------------------------
+-- Table "ROL"
+-- -----------------------------------------------------
 CREATE TABLE ROL(
     "id_rol" SERIAL NOT NULL,
     "nombre_rol" VARCHAR(15) NULL,
