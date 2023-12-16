@@ -1,20 +1,21 @@
 package com.FeastFleet.FeastFleet.domain.dto;
 
+import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 import lombok.Getter;
 import lombok.Setter;
 
 
 public class Review {
 
-    private String restaurantId;
+    private int reviewId;
 
     private String userId;
+
+    private String restaurantId;
 
     private String comment;
 
     private double qualification;
-
-
 
     public String getRestaurantId() {
         return restaurantId;
@@ -47,5 +48,13 @@ public class Review {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public int getReviewId() {
+        return reviewId;
+    }
+
+    public void setReviewId(int reviewId) {
+        this.reviewId = reviewId;
     }
 }

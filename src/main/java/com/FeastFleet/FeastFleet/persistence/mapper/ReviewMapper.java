@@ -13,8 +13,9 @@ import java.util.List;
 public interface ReviewMapper {
 
     @Mappings({
-            @Mapping(source = "idResena.idRestaurante", target ="restaurantId" ),
-            @Mapping(source = "idResena.idUsuario", target = "userId"),
+            @Mapping(source = "idResena", target ="reviewId" ),
+            @Mapping(source = "idUsuario", target = "userId"),
+            @Mapping(source = "idRestaurante", target = "restaurantId"),
             @Mapping(source = "comentario", target ="comment" ),
             @Mapping(source = "calificacion", target ="qualification" )
 
@@ -24,9 +25,5 @@ public interface ReviewMapper {
 
 
     @InheritInverseConfiguration
-    @Mappings({
-            @Mapping(target = "usuario", ignore = true),
-            @Mapping(target = "restaurante", ignore = true)
-    })
     Resena toResena (Review review);
 }
