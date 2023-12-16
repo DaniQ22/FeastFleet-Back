@@ -14,7 +14,6 @@ import java.util.Optional;
 @RequestMapping("/api/users")
 public class UserController {
 
-
     private final UserServiceInter userServiceInter;
 
     @Autowired
@@ -38,13 +37,15 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable String id){
+    public ResponseEntity<Void> delete(@PathVariable String id){
         userServiceInter.delete(id);
+        return ResponseEntity.ok().build();
     }
-    @PutMapping("/update")
 
+    @PutMapping("/update")
     public ResponseEntity<User> update(@RequestBody User user){
-        return ResponseEntity.ok(this.userServiceInter.save(user));
+       return ResponseEntity.ok(this.userServiceInter.save(user));
+
     }
 
 }

@@ -10,6 +10,10 @@ public interface ReservationServiceInter {
 
     List<Reservation> getAll();
 
+    Optional<Reservation> getById(Integer id);
 
+    Reservation save(Reservation reservation);
+
+    void delete(Integer id);
 
 }

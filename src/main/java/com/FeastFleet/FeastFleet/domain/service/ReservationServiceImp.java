@@ -25,5 +25,20 @@ public class ReservationServiceImp implements ReservationServiceInter{
         return reservationRepositoryInter.getAll();
     }
 
+    @Override
+    public Optional<Reservation> getById(Integer id) {
+        return reservationRepositoryInter.getById(id);
+    }
+
+    @Override
+    public Reservation save(Reservation reservation) {
+        return reservationRepositoryInter.save(reservation);
+    }
+
+    @Override
+    public void delete(Integer id) {
+      reservationRepositoryInter.delete(id);
+    }
+
 
 }

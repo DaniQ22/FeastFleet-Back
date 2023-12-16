@@ -13,5 +13,5 @@ public interface RestaurantServiceInter {
 
     Optional<Restaurant> getById(String id);
 
-
+    void delete(String id);
 }

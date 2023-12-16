@@ -40,5 +40,10 @@ public class RestaurantRepository implements RestaurantRepositoryInter {
         return restauranteCrud.findById(id).map(restaurantMapper::toRestaurant);
     }
 
+    @Override
+    public void detele(String id) {
+         restauranteCrud.deleteById(id);
+    }
+
 
 }

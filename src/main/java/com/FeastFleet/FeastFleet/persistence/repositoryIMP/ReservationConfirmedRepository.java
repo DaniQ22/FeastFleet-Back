@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ReservationConfirmedRepository implements ReservationRepositoryConfirmInter {
@@ -27,5 +28,21 @@ public class ReservationConfirmedRepository implements ReservationRepositoryConf
     public List<ReservationConfirm> getAll() {
         List<ReservaConfirmada> reservaConfirmadas = reservaConfirmadaCrud.findAll();
         return reservationConfirmMapper.toReservartionsConfirms(reservaConfirmadas);
+    }
+
+    @Override
+    public Optional<ReservationConfirm> getById(Integer id) {
+        return reservaConfirmadaCrud.findById(id).map(reservationConfirmMapper::toReservartionConfirm);
+    }
+
+    @Override
+    public ReservationConfirm save(ReservationConfirm reservationConfirm) {
+        ReservaConfirmada reservaConfirmada = reservationConfirmMapper.toReservaConfirmada(reservationConfirm);
+        return reservationConfirmMapper.toReservartionConfirm(reservaConfirmadaCrud.save(reservaConfirmada));
+    }
+
+    @Override
+    public void delete(Integer id) {
+      reservaConfirmadaCrud.deleteById(id);
     }
 }

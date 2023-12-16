@@ -36,6 +36,14 @@ public class RestaurantController {
     return ResponseEntity.ok(restaurantServiceInter.save(restaurant));
 
     }
+    @DeleteMapping("/delete")
+    public  ResponseEntity<Void> delete(@PathVariable String id){
+      restaurantServiceInter.delete(id);
+      return ResponseEntity.ok().build();
+    }
 
-
+    @PutMapping("/update")
+    public ResponseEntity<Restaurant> update(@RequestBody Restaurant restaurant){
+    return ResponseEntity.ok(restaurantServiceInter.save(restaurant));
+    }
 }

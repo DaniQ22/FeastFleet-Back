@@ -31,4 +31,9 @@ public class RestaurantServiceImp implements RestaurantServiceInter{
     public Optional<Restaurant> getById(String id) {
         return restaurantRepositoryInter.getById(id);
     }
+
+    @Override
+    public void delete(String id) {
+        restaurantRepositoryInter.detele(id);
+    }
 }

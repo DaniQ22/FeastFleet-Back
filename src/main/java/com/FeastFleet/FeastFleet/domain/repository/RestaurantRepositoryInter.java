@@ -13,4 +13,6 @@ public interface RestaurantRepositoryInter {
 
     Optional<Restaurant> getById(String id);
 
+    void detele(String id);
+
 }
