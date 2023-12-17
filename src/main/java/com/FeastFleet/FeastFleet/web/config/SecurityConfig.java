@@ -21,7 +21,7 @@ public class SecurityConfig {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
-                                .requestMatchers("/api/users/**","Preference/**", "Role/**", "/Review/**","/api/reservation/**", "/api/restaurant/**", "/api/reservationconfirmed").permitAll())
+                                .requestMatchers("/api/users/**","Preference/**", "Role/**", "/Review/**","/api/reservation/**", "/api/restaurant/**", "/api/reservationconfirmed", "/api/gpt3/**").permitAll())
         ;
         return http.build();
     }
