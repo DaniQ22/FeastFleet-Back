@@ -9,22 +9,20 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {ReservationMapper.class})
-public interface UserMapper {
+@Mapper(componentModel = "spring", uses = { RoleMapper.class })
+public interface UserMapperr {
 
     @Mappings({
-            @Mapping(source = "idUsuario", target = "userId"),
-            @Mapping(source = "nombre", target = "name"),
-            @Mapping(source = "apellido", target = "lastName"),
-            @Mapping(source = "correo", target = "email"),
+            @Mapping(source = "nombreUsuario", target = "userName"),
             @Mapping(source = "contraseña", target = "password"),
-            @Mapping(source = "idRol", target = "rolId"),
-            @Mapping(source = "reservas", target = "reservations")
+        //    @Mapping(source = "idCliente", target = "idCustomer"),
+            @Mapping(source = "roless", target = "roles")
     })
     User toUser(Usuario usuario);
     @InheritInverseConfiguration
-    @Mapping(target = "reservas", ignore = true)
+        //  @Mapping(target = "reservas", ignore = true)
     Usuario toUsuario(User user);
 
     List<User> toUser(List<Usuario> usuario);
 }
+

@@ -9,7 +9,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {UserMapper.class, RestaurantMapper.class})
+@Mapper(componentModel = "spring", uses = {UserMapperr.class, RestaurantMapper.class})
 public interface ReviewMapper {
 
     @Mappings({

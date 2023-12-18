@@ -20,9 +20,7 @@ public class Reserva {
     @Column(name = "numero_comnsales")
     private Integer numeroComensales;
 
-    @ManyToOne
-    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
-    private Usuario usuario;
+
 
 
     public Integer getIdReserva() {
@@ -49,11 +47,5 @@ public class Reserva {
         this.numeroComensales = numeroComensales;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }

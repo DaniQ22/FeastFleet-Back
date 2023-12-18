@@ -4,7 +4,7 @@ import com.FeastFleet.FeastFleet.domain.dto.User;
 import com.FeastFleet.FeastFleet.domain.repository.UserRepositoryInter;
 import com.FeastFleet.FeastFleet.persistence.crud.UsuarioCrud;
 import com.FeastFleet.FeastFleet.persistence.entity.Usuario;
-import com.FeastFleet.FeastFleet.persistence.mapper.UserMapper;
+import com.FeastFleet.FeastFleet.persistence.mapper.UserMapperr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,10 +15,10 @@ import java.util.Optional;
 public class UserRepository implements UserRepositoryInter {
 
     private final UsuarioCrud usuarioCrud;
-    private final UserMapper userMapper;
+    private final UserMapperr userMapper;
 
     @Autowired
-    public UserRepository(UsuarioCrud usuarioCrud, UserMapper userMapper) {
+    public UserRepository(UsuarioCrud usuarioCrud, UserMapperr userMapper) {
         this.usuarioCrud = usuarioCrud;
         this.userMapper = userMapper;
     }

@@ -4,45 +4,19 @@ import java.util.List;
 
 public class User {
 
-    private String userId;
-    private String name;
-    private String lastName;
-    private String email;
+    private String userName;
     private String password;
-    private Integer rolId;
-    private List<Reservation> reservations;
+
+   // private String idCustomer;
+    private List<Role> roles;
 
 
-    public String getUserId() {
-        return userId;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -52,20 +26,20 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public Integer getRolId() {
-        return rolId;
+/*
+    public String getIdCustomer() {
+        return idCustomer;
     }
 
-    public void setRolId(Integer rolId) {
-        this.rolId = rolId;
+    public void setIdCustomer(String idCustomer) {
+        this.idCustomer = idCustomer;
+    }  */
+
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }
