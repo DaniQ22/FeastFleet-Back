@@ -7,6 +7,16 @@ CREATE TABLE CATEGORIA(
  "descripcion" VARCHAR(100) NULL
  );
 
+ CREATE TABLE RESTAURANTE (
+     "id_restaurante" VARCHAR(20) NOT NULL,
+     "nombre" VARCHAR(30) NULL,
+     "tipo_cocina" VARCHAR(30) NULL,
+     "direccion" VARCHAR(30) NULL,
+     "descripcion" VARCHAR(100) NULL,
+     "calificacion" FLOAT(5) NULL,
+     PRIMARY KEY ("id_restaurante")
+ );
+
     -- -----------------------------------------------------
  -- Table "RESTAURANTE_CATEGORIA"
  -- -----------------------------------------------------
@@ -19,43 +29,46 @@ CREATE TABLE CATEGORIA(
 
  );
 
-
-    -- -----------------------------------------------------
--- Table "ROL"
--- -----------------------------------------------------
-CREATE TABLE ROL(
-    "id_rol" SERIAL NOT NULL,
-    "nombre_rol" VARCHAR(15) NULL,
-    PRIMARY KEY ("id_rol")
-    );
+     -- -----------------------------------------------------
+     -- Table "CLIENTE"
+     -- -----------------------------------------------------
+     CREATE TABLE CLIENTE(
+     "id_cliente" VARCHAR(20) PRIMARY KEY,
+     "nombre" VARCHAR(20) NOT NULL,
+     "apellido" VARCHAR(20) NOT NULL,
+     "correo_electronico" VARCHAR(20) NOT NULL,
+     "telefono" VARCHAR(20) NOT NULL,
+     "direccion" VARCHAR(20) NOT NULL,
+     );
 
   -- -----------------------------------------------------
 -- Table "USUARIO"
 -- -----------------------------------------------------
   CREATE TABLE USUARIO (
-    "id_usuario" VARCHAR(20) NOT NULL,
-    "nombre" VARCHAR(20)  NULL,
-    "apellido" VARCHAR(20) NULL,
-    "correo_electronico" VARCHAR(30) NULL,
+    "nombre_usuario" VARCHAR(20) PRIMARY KEY,
     "contraseña" VARCHAR(18) NULL,
-    "id_rol" INT NOT NULL, 
     PRIMARY KEY ("id_usuario"),
-    FOREIGN KEY ("id_rol") REFERENCES ROL ("id_rol")
+    "id_cliente" VARCHAR(20) NOT NULL,
+    FOREIGN KEY ("id_cliente") REFERENCES CLIENTE ("id_cliente")
     );
 
-    
+     -- -----------------------------------------------------
+    -- Table "ROL"
+    -- -----------------------------------------------------
+    CREATE TABLE ROL(
+        "id_rol" SERIAL NOT NULL,
+        "nombre_rol" VARCHAR(15) NULL,
+        "id_usuario" VARCHAR(2O) NOT NULL,
+
+        PRIMARY KEY ("id_rol"),
+        FOREIGN KEY("id_usuario") REFERENCES USUARIO ("nombre_usuario")
+        );
+
+
     -- -----------------------------------------------------
 -- Table "RESTAURANTE"
 -- -----------------------------------------------------
-CREATE TABLE RESTAURANTE (
-    "id_restaurante" VARCHAR(20) NOT NULL,
-    "nombre" VARCHAR(30) NULL,
-    "tipo_cocina" VARCHAR(30) NULL,
-    "direccion" VARCHAR(30) NULL,
-    "descripcion" VARCHAR(100) NULL,
-    "calificacion" FLOAT(5) NULL,
-    PRIMARY KEY ("id_restaurante")
-);
+
 
 
     -- -----------------------------------------------------
@@ -63,11 +76,11 @@ CREATE TABLE RESTAURANTE (
 -- -----------------------------------------------------
 CREATE Table RESERVA (
     "id_reserva" SERIAL PRIMARY KEY,
-    "id_usuario" VARCHAR(20) NOT NULL,
+    "id_cliente" VARCHAR(20) NOT NULL,
     "id_restaurante" VARCHAR(20) NOT NULL,
     "fecha_hora" TIMESTAMP NULL,
     "numero_comnsales" INT NULL,
-    FOREIGN KEY("id_usuario") REFERENCES USUARIO ("id_usuario")
+    FOREIGN KEY("id_cliente") REFERENCES CLIENTE ("id_cliente")
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY ("id_restaurante") REFERENCES RESTAURANTE ("id_restaurante")
@@ -92,11 +105,11 @@ CREATE Table RESERVA (
 -- -----------------------------------------------------
 CREATE TABLE RESENA (
     "id_reseña" SERIAL PRIMARY KEY,
-    "id_usuario" VARCHAR(20) NOT NULL,
+    "id_cliente" VARCHAR(20) NOT NULL,
     "id_restaurante" VARCHAR(20) NOT NULL,
     "comentario" VARCHAR(100) NULL,
     "calificacion" FLOAT NULL,
-    FOREIGN KEY("id_usuario") REFERENCES USUARIO ("id_usuario")
+    FOREIGN KEY("id_cliente") REFERENCES CLIENTE ("id_cliente")
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
     FOREIGN KEY ("id_restaurante") REFERENCES RESTAURANTE ("id_restaurante")
@@ -122,10 +135,10 @@ FOREIGN KEY ("id_restaurante") REFERENCES RESTAURANTE ("id_restaurante")
 -- -----------------------------------------------------
 CREATE TABLE PREFERENCIAS_GASTRONOMICAS (
     "id_preferencia" SERIAL NOT NULL,
-    "id_usuario" VARCHAR(20) NOT NULL,
+    "id_cliente" VARCHAR(20) NOT NULL,
     "preferencia" VARCHAR(20) NULL,
     PRIMARY KEY ("id_preferencia"),
-    FOREIGN KEY ("id_usuario") REFERENCES USUARIO ("id_usuario")
+    FOREIGN KEY ("id_cliente") REFERENCES CLIENTE ("id_cliente")
 );
 
             -- -----------------------------------------------------
@@ -134,11 +147,11 @@ CREATE TABLE PREFERENCIAS_GASTRONOMICAS (
 
 CREATE TABLE CHATGP (
     "id_chat" SERIAL NOT NULL,
-    "id_usuario" VARCHAR(20) NOT NULL,
+    "id_cliente" VARCHAR(20) NOT NULL,
     "contenido" VARCHAR(200) NULL,
     "fecha_hora" TIMESTAMP NULL,
     PRIMARY KEY ("id_chat"),
-    FOREIGN KEY ("id_usuario") REFERENCES USUARIO ("id_usuario") 
+    FOREIGN KEY ("id_cliente") REFERENCES CLIENTE ("id_cliente")
 );
 
 
