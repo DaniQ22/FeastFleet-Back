@@ -1,4 +1,4 @@
-    -- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Table "ROL"
 -- -----------------------------------------------------
 CREATE TABLE CATEGORIA(
@@ -8,7 +8,7 @@ CREATE TABLE CATEGORIA(
  );
 
  CREATE TABLE RESTAURANTE (
-     "id_restaurante" VARCHAR(20) NOT NULL,
+     "id_restaurante" VARCHAR(30) NOT NULL,
      "nombre" VARCHAR(30) NULL,
      "tipo_cocina" VARCHAR(30) NULL,
      "direccion" VARCHAR(30) NULL,
@@ -33,23 +33,23 @@ CREATE TABLE CATEGORIA(
      -- Table "CLIENTE"
      -- -----------------------------------------------------
      CREATE TABLE CLIENTE(
-     "id_cliente" VARCHAR(20) PRIMARY KEY,
-     "nombre" VARCHAR(20) NOT NULL,
-     "apellido" VARCHAR(20) NOT NULL,
-     "correo_electronico" VARCHAR(20) NOT NULL,
-     "telefono" VARCHAR(20) NOT NULL,
-     "direccion" VARCHAR(20) NOT NULL,
+     "id_cliente" VARCHAR(30) PRIMARY KEY,
+     "nombre" VARCHAR(30) NOT NULL,
+     "apellido" VARCHAR(30) NOT NULL,
+     "correo_electronico" VARCHAR(30) NOT NULL,
+     "telefono" VARCHAR(30) NOT NULL,
+     "direccion" VARCHAR(30) NOT NULL
      );
 
   -- -----------------------------------------------------
 -- Table "USUARIO"
 -- -----------------------------------------------------
   CREATE TABLE USUARIO (
-    "nombre_usuario" VARCHAR(20) PRIMARY KEY,
-    "contraseña" VARCHAR(18) NULL,
-    PRIMARY KEY ("id_usuario"),
-    "id_cliente" VARCHAR(20) NOT NULL,
-    FOREIGN KEY ("id_cliente") REFERENCES CLIENTE ("id_cliente")
+    "nombre_usuario" VARCHAR(30) PRIMARY KEY,
+    "contraseña" VARCHAR(38) NULL,
+    "locked" BOOLEAN,
+    "disabled" BOOLEAN
+
     );
 
      -- -----------------------------------------------------
@@ -58,7 +58,7 @@ CREATE TABLE CATEGORIA(
     CREATE TABLE ROL(
         "id_rol" SERIAL NOT NULL,
         "nombre_rol" VARCHAR(15) NULL,
-        "id_usuario" VARCHAR(2O) NOT NULL,
+        "id_usuario" VARCHAR(20) NOT NULL,
 
         PRIMARY KEY ("id_rol"),
         FOREIGN KEY("id_usuario") REFERENCES USUARIO ("nombre_usuario")
@@ -76,8 +76,8 @@ CREATE TABLE CATEGORIA(
 -- -----------------------------------------------------
 CREATE Table RESERVA (
     "id_reserva" SERIAL PRIMARY KEY,
-    "id_cliente" VARCHAR(20) NOT NULL,
-    "id_restaurante" VARCHAR(20) NOT NULL,
+    "id_cliente" VARCHAR(30) NOT NULL,
+    "id_restaurante" VARCHAR(30) NOT NULL,
     "fecha_hora" TIMESTAMP NULL,
     "numero_comnsales" INT NULL,
     FOREIGN KEY("id_cliente") REFERENCES CLIENTE ("id_cliente")
@@ -105,8 +105,8 @@ CREATE Table RESERVA (
 -- -----------------------------------------------------
 CREATE TABLE RESENA (
     "id_reseña" SERIAL PRIMARY KEY,
-    "id_cliente" VARCHAR(20) NOT NULL,
-    "id_restaurante" VARCHAR(20) NOT NULL,
+    "id_cliente" VARCHAR(30) NOT NULL,
+    "id_restaurante" VARCHAR(30) NOT NULL,
     "comentario" VARCHAR(100) NULL,
     "calificacion" FLOAT NULL,
     FOREIGN KEY("id_cliente") REFERENCES CLIENTE ("id_cliente")
@@ -122,10 +122,10 @@ CREATE TABLE RESENA (
 
 CREATE TABLE IMAGEN (
 "id_imagen" SERIAL NOT NULL,
-"nombre" VARCHAR(20) NULL,
-"tipo_contenido" VARCHAR (20) NULL,
+"nombre" VARCHAR(30) NULL,
+"tipo_contenido" VARCHAR (30) NULL,
 "datos"  BYTEA NULL,
-"id_restaurante" VARCHAR(20) NULL,
+"id_restaurante" VARCHAR(30) NULL,
 PRIMARY KEY ("id_imagen"),
 FOREIGN KEY ("id_restaurante") REFERENCES RESTAURANTE ("id_restaurante")
 );
@@ -135,8 +135,8 @@ FOREIGN KEY ("id_restaurante") REFERENCES RESTAURANTE ("id_restaurante")
 -- -----------------------------------------------------
 CREATE TABLE PREFERENCIAS_GASTRONOMICAS (
     "id_preferencia" SERIAL NOT NULL,
-    "id_cliente" VARCHAR(20) NOT NULL,
-    "preferencia" VARCHAR(20) NULL,
+    "id_cliente" VARCHAR(30) NOT NULL,
+    "preferencia" VARCHAR(30) NULL,
     PRIMARY KEY ("id_preferencia"),
     FOREIGN KEY ("id_cliente") REFERENCES CLIENTE ("id_cliente")
 );
@@ -147,15 +147,9 @@ CREATE TABLE PREFERENCIAS_GASTRONOMICAS (
 
 CREATE TABLE CHATGP (
     "id_chat" SERIAL NOT NULL,
-    "id_cliente" VARCHAR(20) NOT NULL,
+    "id_cliente" VARCHAR(30) NOT NULL,
     "contenido" VARCHAR(200) NULL,
     "fecha_hora" TIMESTAMP NULL,
     PRIMARY KEY ("id_chat"),
     FOREIGN KEY ("id_cliente") REFERENCES CLIENTE ("id_cliente")
 );
-
-
-
-
-
-
