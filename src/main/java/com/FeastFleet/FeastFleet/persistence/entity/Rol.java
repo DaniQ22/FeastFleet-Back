@@ -19,6 +19,10 @@ public class Rol {
     @Column(name = "nombre_rol")
     private String nombreRol;
 
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", insertable = false, updatable = false)
+    private Usuario usuario;
+
 
     public Integer getIdRol() {
         return idRol;
@@ -36,4 +40,11 @@ public class Rol {
         this.nombreRol = nombreRol;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }
