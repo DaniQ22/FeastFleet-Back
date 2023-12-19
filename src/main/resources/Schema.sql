@@ -1,4 +1,4 @@
-    -- -----------------------------------------------------
+-- -----------------------------------------------------
 -- Table "ROL"
 -- -----------------------------------------------------
 CREATE TABLE CATEGORIA(
@@ -38,7 +38,7 @@ CREATE TABLE CATEGORIA(
      "apellido" VARCHAR(20) NOT NULL,
      "correo_electronico" VARCHAR(20) NOT NULL,
      "telefono" VARCHAR(20) NOT NULL,
-     "direccion" VARCHAR(20) NOT NULL,
+     "direccion" VARCHAR(20) NOT NULL
      );
 
   -- -----------------------------------------------------
@@ -47,7 +47,6 @@ CREATE TABLE CATEGORIA(
   CREATE TABLE USUARIO (
     "nombre_usuario" VARCHAR(20) PRIMARY KEY,
     "contraseña" VARCHAR(18) NULL,
-    PRIMARY KEY ("id_usuario"),
     "id_cliente" VARCHAR(20) NOT NULL,
     FOREIGN KEY ("id_cliente") REFERENCES CLIENTE ("id_cliente")
     );
@@ -58,7 +57,7 @@ CREATE TABLE CATEGORIA(
     CREATE TABLE ROL(
         "id_rol" SERIAL NOT NULL,
         "nombre_rol" VARCHAR(15) NULL,
-        "id_usuario" VARCHAR(2O) NOT NULL,
+"id_usuario" VARCHAR(20) NOT NULL,
 
         PRIMARY KEY ("id_rol"),
         FOREIGN KEY("id_usuario") REFERENCES USUARIO ("nombre_usuario")
@@ -68,8 +67,6 @@ CREATE TABLE CATEGORIA(
     -- -----------------------------------------------------
 -- Table "RESTAURANTE"
 -- -----------------------------------------------------
-
-
 
     -- -----------------------------------------------------
 -- Table "RESERVA"
@@ -153,9 +150,3 @@ CREATE TABLE CHATGP (
     PRIMARY KEY ("id_chat"),
     FOREIGN KEY ("id_cliente") REFERENCES CLIENTE ("id_cliente")
 );
-
-
-
-
-
-
