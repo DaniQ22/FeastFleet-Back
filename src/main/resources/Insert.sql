@@ -39,3 +39,6 @@ INSERT INTO RESERVA_CONFIRMADA (id_reserva, codigo_confirmacion, fecha_confirmac
 
 INSERT INTO PREFERENCIAS_GASTRONOMICAS (id_cliente, preferencia) VALUES ('1005438555', 'Carnes Maduradas'),
 ('1005438555', 'Bowls');
+
+insert into imagen ("id_imagen", "id_restaurante") values ('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+														  'FFFFF2D');

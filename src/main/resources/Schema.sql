@@ -7,6 +7,10 @@ CREATE TABLE CATEGORIA(
  "descripcion" VARCHAR(100) NULL
  );
 
+ -- -----------------------------------------------------
+ -- Table "RESTAURANTE"
+ -- -----------------------------------------------------
+
  CREATE TABLE RESTAURANTE (
      "id_restaurante" VARCHAR(30) NOT NULL,
      "nombre" VARCHAR(30) NULL,
@@ -17,7 +21,7 @@ CREATE TABLE CATEGORIA(
      PRIMARY KEY ("id_restaurante")
  );
 
-    -- -----------------------------------------------------
+    -- --------------------------------------------------
  -- Table "RESTAURANTE_CATEGORIA"
  -- -----------------------------------------------------
  CREATE TABLE RESTAURANTE_CATEGORIA (
@@ -41,7 +45,7 @@ CREATE TABLE CATEGORIA(
      "direccion" VARCHAR(30) NOT NULL
      );
 
-  -- -----------------------------------------------------
+  -- ---------------------------------------------------
 -- Table "USUARIO"
 -- -----------------------------------------------------
   CREATE TABLE USUARIO (
@@ -52,9 +56,9 @@ CREATE TABLE CATEGORIA(
 
     );
 
-     -- -----------------------------------------------------
+     -- ---------------------------------------------------
     -- Table "ROL"
-    -- -----------------------------------------------------
+    -- ----------------------------------------------------
     CREATE TABLE ROL(
         "id_rol" SERIAL NOT NULL,
         "nombre_rol" VARCHAR(15) NULL,
@@ -65,13 +69,7 @@ CREATE TABLE CATEGORIA(
         );
 
 
-    -- -----------------------------------------------------
--- Table "RESTAURANTE"
--- -----------------------------------------------------
-
-
-
-    -- -----------------------------------------------------
+    -- -------------------------------------------------
 -- Table "RESERVA"
 -- -----------------------------------------------------
 CREATE Table RESERVA (
@@ -88,7 +86,7 @@ CREATE Table RESERVA (
     ON UPDATE NO ACTION
     );
 
-                -- -----------------------------------------------------
+                -- -----------------------------------------
     -- Table "RESERVA_CONFIRMADA"
     -- -----------------------------------------------------
 
@@ -100,7 +98,7 @@ CREATE Table RESERVA (
      FOREIGN KEY ("id_reserva") REFERENCES RESERVA ("id_reserva")
  );
 
-        -- -----------------------------------------------------
+        -- ---------------------------------------------
 -- Table "RESEÑA"
 -- -----------------------------------------------------
 CREATE TABLE RESENA (
@@ -116,21 +114,15 @@ CREATE TABLE RESENA (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-            -- -----------------------------------------------------
+            -- ------------------------------------------
 -- Table "IMAGEN"
 -- -----------------------------------------------------
 
-CREATE TABLE IMAGEN (
-"id_imagen" SERIAL NOT NULL,
-"nombre" VARCHAR(30) NULL,
-"tipo_contenido" VARCHAR (30) NULL,
-"datos"  BYTEA NULL,
-"id_restaurante" VARCHAR(30) NULL,
-PRIMARY KEY ("id_imagen"),
-FOREIGN KEY ("id_restaurante") REFERENCES RESTAURANTE ("id_restaurante")
-);
+CREATE TABLE IMAGEN ("id_imagen" VARCHAR(500) primary key,
+					"id_restaurante" VARCHAR(20) NOT NULL,
+					FOREIGN KEY ("id_restaurante") REFERENCES restaurante("id_restaurante"));
 
-            -- -----------------------------------------------------
+            -- -----------------------------------------
 -- Table "PREFERENCIAS_GASTRONOMICAS"
 -- -----------------------------------------------------
 CREATE TABLE PREFERENCIAS_GASTRONOMICAS (
@@ -141,7 +133,7 @@ CREATE TABLE PREFERENCIAS_GASTRONOMICAS (
     FOREIGN KEY ("id_cliente") REFERENCES CLIENTE ("id_cliente")
 );
 
-            -- -----------------------------------------------------
+            -- -----------------------------------------
 -- Table "CHAT_GPT"
 -- -----------------------------------------------------
 
