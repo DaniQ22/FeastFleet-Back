@@ -27,8 +27,15 @@ public class OpenAIController {
 
 
     @PostMapping(value = "/chat", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ChatGPTResponse chat(@RequestBody ChatRequest chatRequest) {
-        return openAIClientService.chat(chatRequest);
-    }
+    public String chat(@RequestBody ChatRequest chatRequest) {
+        ChatGPTResponse chatGPTResponse =  openAIClientService.chat(chatRequest);
+        String response = "";
 
+        if (chatGPTResponse != null &&
+        chatGPTResponse.getChoices() != null
+        && !chatGPTResponse.getChoices().isEmpty()){
+            response = chatGPTResponse.getChoices().get(0).getMessage().getContent();
+        }
+        return response;
+    }
 }

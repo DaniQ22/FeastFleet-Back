@@ -18,6 +18,8 @@ public class RestaurantServiceImp implements RestaurantServiceInter{
         this.restaurantRepositoryInter = restaurantRepositoryInter;
     }
 
+
+    @Override
     public List<Restaurant> getAll() {
     return restaurantRepositoryInter.getAll();
     }

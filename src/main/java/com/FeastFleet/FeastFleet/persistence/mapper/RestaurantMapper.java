@@ -9,7 +9,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {ImageRestaurantMapper.class, CategoryRestaurantMapper.class})
 public interface RestaurantMapper {
 
     @Mappings({
@@ -18,7 +18,10 @@ public interface RestaurantMapper {
             @Mapping(source = "tipoCocina", target = "cookType"),
             @Mapping(source = "direccion", target = "address"),
             @Mapping(source = "descripcion", target = "description"),
-            @Mapping(source = "calificacion", target = "calification")
+            @Mapping(source = "calificacion", target = "calification"),
+            @Mapping(source = "imagenes", target = "image"),
+            @Mapping(source = "categorias", target = "categories"
+            )
     })
     Restaurant toRestaurant(Restaurante restaurante);
 

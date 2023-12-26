@@ -1,9 +1,8 @@
 package com.FeastFleet.FeastFleet.persistence.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 
 @Entity
@@ -21,6 +20,11 @@ public class Restaurante {
     private String descripcion;
     private Float calificacion;
 
+    @OneToMany(mappedBy = "restaurante")
+    private List<ImagenRestaurante> imagenes;
+
+    @OneToMany(mappedBy = "rest")
+    private List<RestauranteCategoria> categorias;
 
     public String getIdRestaurante() {
         return idRestaurante;
@@ -68,5 +72,21 @@ public class Restaurante {
 
     public void setCalificacion(Float calificacion) {
         this.calificacion = calificacion;
+    }
+
+    public List<ImagenRestaurante> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(List<ImagenRestaurante> imagenes) {
+        this.imagenes = imagenes;
+    }
+
+    public List<RestauranteCategoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<RestauranteCategoria> categorias) {
+        this.categorias = categorias;
     }
 }

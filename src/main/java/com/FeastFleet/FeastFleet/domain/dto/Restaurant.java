@@ -1,6 +1,8 @@
 package com.FeastFleet.FeastFleet.domain.dto;
 
 
+import java.util.List;
+
 public class Restaurant {
 
     private String restaurantId;
@@ -10,11 +12,14 @@ public class Restaurant {
     private String description;
     private Float calification;
 
+    private List<ImgRestaurant> image;
 
+    private List<CategoryRestaurant> categories;
 
     public String getRestaurantId() {
         return restaurantId;
     }
+
     public void setRestaurantId(String restaurantId) {
         this.restaurantId = restaurantId;
     }
@@ -31,16 +36,16 @@ public class Restaurant {
         return cookType;
     }
 
-    public void setCookType(String cookTipe) {
-        this.cookType = cookTipe;
+    public void setCookType(String cookType) {
+        this.cookType = cookType;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String addres) {
-        this.address = addres;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getDescription() {
@@ -57,5 +62,21 @@ public class Restaurant {
 
     public void setCalification(Float calification) {
         this.calification = calification;
+    }
+
+    public List<ImgRestaurant> getImage() {
+        return image;
+    }
+
+    public void setImage(List<ImgRestaurant> image) {
+        this.image = image;
+    }
+
+    public List<CategoryRestaurant> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<CategoryRestaurant> categories) {
+        this.categories = categories;
     }
 }

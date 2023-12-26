@@ -5,13 +5,16 @@ import com.FeastFleet.FeastFleet.domain.repository.RestaurantRepositoryInter;
 import com.FeastFleet.FeastFleet.persistence.crud.RestauranteCrud;
 import com.FeastFleet.FeastFleet.persistence.entity.Restaurante;
 import com.FeastFleet.FeastFleet.persistence.mapper.RestaurantMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository
+@Transactional
 public class RestaurantRepository implements RestaurantRepositoryInter {
 
     private final RestaurantMapper restaurantMapper;
@@ -28,6 +31,7 @@ public class RestaurantRepository implements RestaurantRepositoryInter {
         List<Restaurante> restaurantes = restauranteCrud.findAll();
         return restaurantMapper.toRestaurants(restaurantes);
     }
+
 
     @Override
     public Restaurant save(Restaurant restaurant) {
