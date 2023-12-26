@@ -3,7 +3,8 @@ package com.FeastFleet.FeastFleet.web.config;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import org.springframework.context.annotation.Configuration;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -26,8 +27,26 @@ public class JWTUtil {
                 .withExpiresAt(new Date(System.currentTimeMillis() + TimeUnit.DAYS.toMillis(15)))
                 .sign(Algorith);
 
-
     }
 
+    public boolean isValid(String jwt){
+        try{
+            JWT.require(Algorith)
+                    .build()
+                    .verify(jwt);
+
+            return true;
+
+        }catch (JWTVerificationException e){
+            return false;
+        }
+    }
+
+    public String getUsername(String jwt){
+        return JWT.require(Algorith)
+                .build()
+                .verify(jwt)
+                .getSubject();
+    }
 
 }
