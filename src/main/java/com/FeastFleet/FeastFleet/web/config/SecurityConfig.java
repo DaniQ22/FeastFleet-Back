@@ -21,18 +21,21 @@ public class SecurityConfig {
 
     @Autowired
     public SecurityConfig(JWTFilter jwtFilter) {
+
         this.jwtFilter = jwtFilter;
     }
 
+    CorsConfig corsConfig = new CorsConfig();
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
         http
-                .csrf(AbstractHttpConfigurer::disable)
+                .csrf(AbstractHttpConfigurer::disable).cors((cors) -> cors.configurationSource(corsConfig.corsConfigurationSource()))
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
-                                .requestMatchers("/api/users/**","Preference/**", "Role/**", "/Review/**","/api/reservation/**", "/api/restaurant/**", "/api/reservationconfirmed", "/api/gpt3/**").permitAll())
+                                .requestMatchers("/api/auth/**").permitAll())
+                              //  .requestMatchers("/api/users/**","Preference/**", "Role/**", "/Review/**","/api/reservation/**", "/api/restaurant/**", "/api/reservationconfirmed", "/api/gpt3/**").permitAll())
         ;
         return http.build();
     }

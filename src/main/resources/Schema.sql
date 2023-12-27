@@ -50,7 +50,7 @@ CREATE TABLE CATEGORIA(
 -- -----------------------------------------------------
   CREATE TABLE USUARIO (
     "nombre_usuario" VARCHAR(30) PRIMARY KEY,
-    "contraseña" VARCHAR(38) NULL,
+    "contraseña" VARCHAR(300) NULL,
     "locked" BOOLEAN,
     "disabled" BOOLEAN
 
