@@ -15,7 +15,7 @@ public class CorsConfig {
     CorsConfigurationSource corsConfigurationSource(){
          CorsConfiguration corsConfiguration = new CorsConfiguration();
 
-        corsConfiguration.setAllowedOrigins(Arrays.asList("http")); //Orígenees que pueden consumir esta API
+        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200")); //Orígenees que pueden consumir esta API
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE")); //Métodos permitidos para usar desde el cliente
         corsConfiguration.setAllowedHeaders(Arrays.asList("*")); // headers permitidos TODOS
 

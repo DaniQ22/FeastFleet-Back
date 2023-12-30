@@ -15,6 +15,7 @@ public interface ImageRestaurantMapper {
 
     @Mappings({
             @Mapping(source = "urlImagenes", target = "imageUrl"),
+            @Mapping(source = "idRestaurante", target = "restaurantId")
 
     })
     ImgRestaurant toImgRestaurant (ImagenRestaurante imagenRestaurante);
@@ -24,8 +25,7 @@ public interface ImageRestaurantMapper {
 
     @InheritInverseConfiguration
     @Mappings( {
-        @Mapping(target = "restaurante", ignore = true),
-        @Mapping(target = "idRestaurante", ignore = true)
+        @Mapping(target = "restaurante", ignore = true)
     })
 
     ImagenRestaurante toImgRestaunrante(ImgRestaurant imgRestaurant);

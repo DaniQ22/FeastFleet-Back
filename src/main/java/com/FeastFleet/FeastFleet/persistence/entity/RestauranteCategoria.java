@@ -9,12 +9,12 @@ public class RestauranteCategoria {
     @EmbeddedId
     private CategoriaRestaurantePk id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_restaurante", insertable = false, updatable = false)
     private Restaurante rest;
 
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
     private Categoria categoria;
 
