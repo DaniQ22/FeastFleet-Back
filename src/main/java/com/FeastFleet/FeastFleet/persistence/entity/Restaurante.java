@@ -20,10 +20,10 @@ public class Restaurante {
     private String descripcion;
     private Float calificacion;
 
-    @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ImagenRestaurante> imagenes;
 
-    @OneToMany(mappedBy = "rest", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "rest", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RestauranteCategoria> categorias;
 
     public String getIdRestaurante() {

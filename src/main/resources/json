@@ -1,0 +1,27 @@
+//Save a restaurant with category and imagens
+ {
+        "restaurantId": "FFFFF12D",
+        "name": "Agua Calzon",
+        "cookType": "Corriente",
+        "address": "Sincelejo, sucre",
+        "description": "Comidas de amarre",
+        "calification": 4.3,
+        "image": [
+            {
+                "restaurantId": "FFFFF12D",
+                "imageUrl": "https://img.freepik.com/foto-gratis/chicas-comiendo-restaurante_23-2148172643.jpg?w=740&t=st=1703902632~exp=1703903232~hmac=93156b4cf1c81e1b060e09b5762b8ea3a00e34c00b57420fe50a6d8f412cbbbb"
+            }
+        ],
+        "categories": [
+             {
+                "categoryId": 1,
+                "restaurantId": "FFFFF12D"
+            },
+            {
+                "categoryId": 3,
+                "restaurantId": "FFFFF12D"
+
+            }
+
+         ]
+    }

@@ -3,12 +3,24 @@ package com.FeastFleet.FeastFleet.domain.dto;
 public class CategoryRestaurant {
 
 
-    private Category category;
-    public Category getCategory() {
-        return category;
+    private int categoryId;
+
+    private String restaurantId;
+
+
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(String restaurantId) {
+        this.restaurantId = restaurantId;
     }
 }

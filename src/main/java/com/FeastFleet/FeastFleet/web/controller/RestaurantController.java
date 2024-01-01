@@ -37,7 +37,7 @@ public class RestaurantController {
     return ResponseEntity.ok(restaurantServiceInter.save(restaurant));
 
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public  ResponseEntity<Void> delete(@PathVariable String id){
       restaurantServiceInter.delete(id);
       return ResponseEntity.ok().build();

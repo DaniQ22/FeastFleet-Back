@@ -13,7 +13,8 @@ import java.util.List;
 public interface CategoryRestaurantMapper{
 
 @Mappings({
-        @Mapping(source = "categoria", target ="category" ),
+        @Mapping(source = "id.idCategoria", target ="categoryId" ),
+        @Mapping(source = "id.restaurante", target = "restaurantId")
 
 
 })
@@ -24,9 +25,7 @@ List<CategoryRestaurant> toCategoryRestaurant(List<RestauranteCategoria> restaur
 @InheritInverseConfiguration
 @Mappings({
         @Mapping(target = "rest", ignore = true ),
-        @Mapping(target = "id.idCategoria", ignore = true),
-
-        @Mapping(target = "id.restaurante", ignore = true)
+        @Mapping(target = "categoria", ignore = true),
 })
 RestauranteCategoria toRestCat (CategoryRestaurant categoryRestaurant);
 

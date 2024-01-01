@@ -10,7 +10,6 @@ public class Restaurant {
     private String cookType;
     private String address;
     private String description;
-    private Float calification;
 
     private List<ImgRestaurant> image;
 
@@ -56,13 +55,6 @@ public class Restaurant {
         this.description = description;
     }
 
-    public Float getCalification() {
-        return calification;
-    }
-
-    public void setCalification(Float calification) {
-        this.calification = calification;
-    }
 
     public List<ImgRestaurant> getImage() {
         return image;
@@ -79,4 +71,5 @@ public class Restaurant {
     public void setCategories(List<CategoryRestaurant> categories) {
         this.categories = categories;
     }
+
 }

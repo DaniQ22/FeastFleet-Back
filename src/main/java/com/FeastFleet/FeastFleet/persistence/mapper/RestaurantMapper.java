@@ -6,6 +6,7 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -18,7 +19,6 @@ public interface RestaurantMapper {
             @Mapping(source = "tipoCocina", target = "cookType"),
             @Mapping(source = "direccion", target = "address"),
             @Mapping(source = "descripcion", target = "description"),
-            @Mapping(source = "calificacion", target = "calification"),
             @Mapping(source = "imagenes", target = "image"),
             @Mapping(source = "categorias", target = "categories"
             )

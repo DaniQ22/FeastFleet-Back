@@ -1,7 +1,11 @@
 package com.FeastFleet.FeastFleet.domain.service;
 
+import com.FeastFleet.FeastFleet.domain.dto.Category;
+import com.FeastFleet.FeastFleet.domain.dto.CategoryRestaurant;
+import com.FeastFleet.FeastFleet.domain.dto.ImgRestaurant;
 import com.FeastFleet.FeastFleet.domain.dto.Restaurant;
 import com.FeastFleet.FeastFleet.domain.repository.RestaurantRepositoryInter;
+import com.FeastFleet.FeastFleet.persistence.entity.ImagenRestaurante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +30,19 @@ public class RestaurantServiceImp implements RestaurantServiceInter{
 
     @Override
     public Restaurant save(Restaurant restaurant) {
+        String restaurantId = restaurant.getRestaurantId();
+        Optional<Restaurant> restaurantOptional = getById(restaurantId);
+
+        List<ImgRestaurant> imagenRestaurantes  = restaurant.getImage();
+        if (imagenRestaurantes != null && !imagenRestaurantes.isEmpty()){
+            imagenRestaurantes.forEach(image -> image.setRestaurantId(restaurantId));
+        }
+
+        List<CategoryRestaurant> categories = restaurant.getCategories();
+        if (categories!=null && !categories.isEmpty()){
+            categories.forEach(cat -> cat.setRestaurantId(restaurantId));
+        }
+
         return restaurantRepositoryInter.save(restaurant);
     }
 
