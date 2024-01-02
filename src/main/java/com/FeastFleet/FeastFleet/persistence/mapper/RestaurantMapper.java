@@ -20,8 +20,8 @@ public interface RestaurantMapper {
             @Mapping(source = "direccion", target = "address"),
             @Mapping(source = "descripcion", target = "description"),
             @Mapping(source = "imagenes", target = "image"),
-            @Mapping(source = "categorias", target = "categories"
-            )
+            @Mapping(source = "categorias", target = "categories"),
+            @Mapping(source = "calificacion", target = "calification")
     })
     Restaurant toRestaurant(Restaurante restaurante);
 

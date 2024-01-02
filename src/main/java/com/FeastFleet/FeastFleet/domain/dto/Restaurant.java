@@ -11,6 +11,8 @@ public class Restaurant {
     private String address;
     private String description;
 
+    private float calification;
+
     private List<ImgRestaurant> image;
 
     private List<CategoryRestaurant> categories;
@@ -72,4 +74,11 @@ public class Restaurant {
         this.categories = categories;
     }
 
+    public float getCalification() {
+        return calification;
+    }
+
+    public void setCalification(float calification) {
+        this.calification = calification;
+    }
 }
