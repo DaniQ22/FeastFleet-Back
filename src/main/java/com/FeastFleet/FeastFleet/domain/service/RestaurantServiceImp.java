@@ -31,7 +31,6 @@ public class RestaurantServiceImp implements RestaurantServiceInter{
     @Override
     public Restaurant save(Restaurant restaurant) {
         String restaurantId = restaurant.getRestaurantId();
-        Optional<Restaurant> restaurantOptional = getById(restaurantId);
 
         List<ImgRestaurant> imagenRestaurantes  = restaurant.getImage();
         if (imagenRestaurantes != null && !imagenRestaurantes.isEmpty()){

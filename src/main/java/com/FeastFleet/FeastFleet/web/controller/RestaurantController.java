@@ -32,7 +32,7 @@ public class RestaurantController {
     return ResponseEntity.ok(restaurantServiceInter.getById(id));
     }
 
-    @PostMapping("save")
+    @PostMapping("/save")
     public ResponseEntity<Restaurant> save(@RequestBody Restaurant restaurant){
     return ResponseEntity.ok(restaurantServiceInter.save(restaurant));
 
