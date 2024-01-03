@@ -5,18 +5,16 @@ INSERT INTO CATEGORIA (nombre_categoria, descripcion) VALUES ('Corriente', 'Rest
 --INSERT TO ROL
 
 
---INSRT TO USUARIO
+--INSRT TO CLIENTE
 INSERT INTO CLIENTE VALUES ('1005438555', 'PAOLA LUCIA', 'MARTINEZ', 'PaolaM@gmail.com', '7775473', 'calle 12'),
 ('1004563215', 'Gabriel', 'Luna', 'gabiElMejor@gmail.com', '7775698', 'calle 15'),
 ('1005897832', 'Sofia', 'Tous', 'tousSofii@gmail.com', '7774115', 'calle 19');
 
-INSERT INTO USUARIO VALUES ('paolucy', 'pao123', false, false), ('gabi1999', 'gabriel444', false, false), ('sofyBig', 'sfy123', false, false), ('DaniQ22','quinonez123', false, false);
+INSERT INTO USUARIO VALUES  ('sofySol', '$2a$12$gX2JJUH3FFMtHqMMLVVJq.o5lgTvlgO4p6X9gvUkIsxU03hkG92ki', false, false), ('DaniQ22','$2a$12$/yHgE8RuJhnuvaNt.zaCN.t9ZmW2shqBpLm46PG25DMiWAfve3v9C', false, false);
 
 INSERT INTO ROL (nombre_rol, id_usuario) VALUES
 ('Admin', 'DaniQ22'),
-('Cliente', 'sofyBig'),
-('Cliente', 'gabi1999'),
-('Cliente', 'paolucy')
+('Cliente', 'SofySol')
 ;
 
 --INSERT TO RESTAURANTE
@@ -39,3 +37,6 @@ INSERT INTO RESERVA_CONFIRMADA (id_reserva, codigo_confirmacion, fecha_confirmac
 
 INSERT INTO PREFERENCIAS_GASTRONOMICAS (id_cliente, preferencia) VALUES ('1005438555', 'Carnes Maduradas'),
 ('1005438555', 'Bowls');
+
+insert into imagen ("id_imagen", "id_restaurante") values ('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+														  'FFFFF2D');
