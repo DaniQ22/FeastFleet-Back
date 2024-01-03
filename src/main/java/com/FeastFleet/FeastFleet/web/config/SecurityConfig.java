@@ -18,14 +18,16 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final JWTFilter jwtFilter;
+    private final CorsConfig corsConfig;
 
     @Autowired
-    public SecurityConfig(JWTFilter jwtFilter) {
+    public SecurityConfig(JWTFilter jwtFilter, CorsConfig corsConfig) {
 
         this.jwtFilter = jwtFilter;
+        this.corsConfig = corsConfig;
     }
 
-    CorsConfig corsConfig = new CorsConfig();
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
@@ -34,8 +36,8 @@ public class SecurityConfig {
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
                         authorizationManagerRequestMatcherRegistry
-                                .requestMatchers("/api/auth/**").permitAll())
-                              //  .requestMatchers("/api/users/**","Preference/**", "Role/**", "/Review/**","/api/reservation/**", "/api/restaurant/**", "/api/reservationconfirmed", "/api/gpt3/**").permitAll())
+                               // .requestMatchers("/api/auth/**").permitAll())
+                                .requestMatchers("/api/users/**","Preference/**", "Role/**", "/Review/**","/api/reservation/**", "/api/restaurant/**", "/api/reservationconfirmed", "/api/gpt3/**").permitAll())
         ;
         return http.build();
     }
