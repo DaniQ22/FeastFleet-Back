@@ -5,7 +5,9 @@ import com.FeastFleet.FeastFleet.domain.dto.CategoryRestaurant;
 import com.FeastFleet.FeastFleet.domain.dto.ImgRestaurant;
 import com.FeastFleet.FeastFleet.domain.dto.Restaurant;
 import com.FeastFleet.FeastFleet.domain.repository.RestaurantRepositoryInter;
+import com.FeastFleet.FeastFleet.domain.validation.RestaurantValidation;
 import com.FeastFleet.FeastFleet.persistence.entity.ImagenRestaurante;
+import com.FeastFleet.FeastFleet.web.message.MessageException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,14 @@ public class RestaurantServiceImp implements RestaurantServiceInter{
     @Override
     public Restaurant save(Restaurant restaurant) {
         String restaurantId = restaurant.getRestaurantId();
+
+        RestaurantValidation.validationSave(restaurant);
+
+        Optional<Restaurant> restaurantOptional = restaurantRepositoryInter.getById(restaurantId);
+
+        if (restaurantOptional.isPresent()){
+            throw  new MessageException("The restaurant is already");
+        }
 
         List<ImgRestaurant> imagenRestaurantes  = restaurant.getImage();
         if (imagenRestaurantes != null && !imagenRestaurantes.isEmpty()){
