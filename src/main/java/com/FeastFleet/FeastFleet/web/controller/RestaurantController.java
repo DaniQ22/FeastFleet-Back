@@ -2,7 +2,10 @@ package com.FeastFleet.FeastFleet.web.controller;
 
 import com.FeastFleet.FeastFleet.domain.dto.Restaurant;
 import com.FeastFleet.FeastFleet.domain.service.RestaurantServiceInter;
+import com.FeastFleet.FeastFleet.web.message.MessageException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,8 +36,14 @@ public class RestaurantController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Restaurant> save(@RequestBody Restaurant restaurant){
-    return ResponseEntity.ok(restaurantServiceInter.save(restaurant));
+    public ResponseEntity<?> save(@RequestBody Restaurant restaurant){
+
+      try {
+        return ResponseEntity.ok(restaurantServiceInter.save(restaurant));
+
+      }catch (MessageException e){
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+      }
 
     }
     @DeleteMapping("/delete/{id}")
