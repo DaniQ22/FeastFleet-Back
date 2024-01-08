@@ -22,9 +22,9 @@ public class ReviewController {
         this.service = service;
     }
 
-    @GetMapping("/geAll")
-    public ResponseEntity<List<Review>> getAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(service.getAll());
+    @GetMapping("/getAll/{restaurantId}")
+    public ResponseEntity<List<Review>> getAll(@PathVariable String restaurantId) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.getAll(restaurantId));
     }
 
     @PostMapping("/save")

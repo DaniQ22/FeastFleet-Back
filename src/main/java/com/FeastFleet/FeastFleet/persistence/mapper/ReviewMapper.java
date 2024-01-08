@@ -9,12 +9,12 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {UserMapperr.class, RestaurantMapper.class})
+@Mapper(componentModel = "spring", uses = {CustomerMapper.class, RestaurantMapper.class})
 public interface ReviewMapper {
 
     @Mappings({
             @Mapping(source = "idResena", target ="reviewId" ),
-            @Mapping(source = "idUsuario", target = "userId"),
+            @Mapping(source = "idCliente", target = "customerId"),
             @Mapping(source = "idRestaurante", target = "restaurantId"),
             @Mapping(source = "comentario", target ="comment" ),
             @Mapping(source = "calificacion", target ="qualification" )

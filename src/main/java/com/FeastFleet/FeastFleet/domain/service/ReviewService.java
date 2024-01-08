@@ -26,8 +26,8 @@ public class ReviewService implements ReviewServiceInter{
     }
 
     @Override
-    public List<Review> getAll() {
-        return  repository.getAll();
+    public List<Review> getAll(String restaurantId) {
+        return  repository.getAll(restaurantId);
     }
 
     @Override

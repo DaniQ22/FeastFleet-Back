@@ -14,7 +14,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/restaurant")
-
 public class RestaurantController {
 
   private final RestaurantServiceInter restaurantServiceInter;

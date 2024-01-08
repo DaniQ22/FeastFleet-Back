@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface ReviewRepositoryInter {
 
-    List<Review> getAll();
+    List<Review> getAll(String restaurantId);
 
     Review save(Review review);
 

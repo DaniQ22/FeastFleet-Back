@@ -9,13 +9,30 @@ public class Review {
 
     private int reviewId;
 
-    private String userId;
+    private String customerId;
 
     private String restaurantId;
 
     private String comment;
 
     private double qualification;
+
+
+    public int getReviewId() {
+        return reviewId;
+    }
+
+    public void setReviewId(int reviewId) {
+        this.reviewId = reviewId;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
 
     public String getRestaurantId() {
         return restaurantId;
@@ -39,22 +56,5 @@ public class Review {
 
     public void setQualification(double qualification) {
         this.qualification = qualification;
-    }
-
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public int getReviewId() {
-        return reviewId;
-    }
-
-    public void setReviewId(int reviewId) {
-        this.reviewId = reviewId;
     }
 }

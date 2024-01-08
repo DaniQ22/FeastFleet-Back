@@ -25,8 +25,8 @@ public class ReviewRepository implements ReviewRepositoryInter {
 
 
     @Override
-    public List<Review> getAll() {
-        List reviews = crud.findAll();
+    public List<Review> getAll(String restaurandId) {
+        List reviews = crud.getReviewsByRestaurant(restaurandId);
         return mapper.toReview(reviews);
     }
 

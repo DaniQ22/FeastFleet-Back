@@ -1,6 +1,7 @@
 package com.FeastFleet.FeastFleet.domain.validation;
 
 import com.FeastFleet.FeastFleet.domain.dto.CategoryRestaurant;
+import com.FeastFleet.FeastFleet.domain.dto.ImgRestaurant;
 import com.FeastFleet.FeastFleet.domain.dto.Restaurant;
 import com.FeastFleet.FeastFleet.web.message.MessageException;
 
@@ -28,6 +29,7 @@ public class RestaurantValidation {
         if (categoryRestaurantLis.isEmpty()){
             throw new MessageException("You must enter at least one category");
         }
+
 
         return true;
 
