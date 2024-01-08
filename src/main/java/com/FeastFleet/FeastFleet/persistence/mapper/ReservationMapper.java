@@ -16,7 +16,8 @@ public interface ReservationMapper {
             @Mapping(source = "idReserva", target = "idReservation"),
             @Mapping(source = "fecha", target = "date"),
             @Mapping(source = "numeroComensales", target = "comensNumber"),
-
+            @Mapping(source = "idRestaurante", target = "restaurantId"),
+            @Mapping(source = "idCliente", target = "customerId")
     })
     Reservation toReservation(Reserva reserva);
 

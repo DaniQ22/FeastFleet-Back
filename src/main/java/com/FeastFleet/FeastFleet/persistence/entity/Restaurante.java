@@ -26,6 +26,9 @@ public class Restaurante {
     @OneToMany(mappedBy = "rest", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RestauranteCategoria> categorias;
 
+    @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<Reserva> reservaList;
+
     public String getIdRestaurante() {
         return idRestaurante;
     }
@@ -88,5 +91,13 @@ public class Restaurante {
 
     public void setCategorias(List<RestauranteCategoria> categorias) {
         this.categorias = categorias;
+    }
+
+    public List<Reserva> getReservaList() {
+        return reservaList;
+    }
+
+    public void setReservaList(List<Reserva> reservaList) {
+        this.reservaList = reservaList;
     }
 }

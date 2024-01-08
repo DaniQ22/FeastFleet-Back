@@ -1,0 +1,18 @@
+//Creacion de la funcion
+create or replace function actualizar_calificacion_restaurant()
+returns trigger as $$
+declare
+nueva_calificacion float;
+begin
+select coalesce(AVG (calificacion), 0)into nueva_calificacion
+from resena re where re.id_restaurante = new.id_restaurante;
+ update restaurante res set calificacion = nueva_calificacion where  res.id_restaurante =
+ new.id_restaurante;
+ return new;
+ end;
+ $$ language plpgsql;
+
+ //Creacion del trigger
+ create trigger trigger_actualizar_calificacion_restaurante
+ AFTER insert or update or delete on resena for each row execute function actualizar_calificacion_restaurant();
+

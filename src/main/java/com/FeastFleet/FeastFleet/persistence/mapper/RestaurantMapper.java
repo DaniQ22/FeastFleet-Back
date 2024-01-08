@@ -26,7 +26,11 @@ public interface RestaurantMapper {
     Restaurant toRestaurant(Restaurante restaurante);
 
     @InheritInverseConfiguration
-    @Mapping(target = "calificacion", ignore = true)
+    @Mappings({
+            @Mapping(target = "calificacion", ignore = true),
+            @Mapping(target = "reservaList", ignore = true)
+    })
+
     Restaurante toRestaurante(Restaurant restaurant);
 
 

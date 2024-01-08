@@ -9,6 +9,9 @@ public class Reservation {
     private LocalDateTime date;
     private Integer comensNumber;
 
+    private String restaurantId;
+
+    private String customerId;
 
     public Integer getIdReservation() {
         return idReservation;
@@ -32,5 +35,21 @@ public class Reservation {
 
     public void setComensNumber(Integer comensNumber) {
         this.comensNumber = comensNumber;
+    }
+
+    public String getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(String restaurantId) {
+        this.restaurantId = restaurantId;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 }
