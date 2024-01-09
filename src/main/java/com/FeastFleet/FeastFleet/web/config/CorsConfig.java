@@ -7,6 +7,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 public class CorsConfig {
@@ -15,10 +16,10 @@ public class CorsConfig {
     CorsConfigurationSource corsConfigurationSource(){
          CorsConfiguration corsConfiguration = new CorsConfiguration();
 
-        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200")); //Orígenees que pueden consumir esta API
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:4200")); //Orígenees que pueden consumir esta API
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE")); //Métodos permitidos para usar desde el cliente
-        corsConfiguration.setAllowedHeaders(Arrays.asList("*")); // headers permitidos TODOS
-
+        corsConfiguration.setAllowedHeaders(List.of("*")); // headers permitidos TODOS
+        corsConfiguration.setExposedHeaders(List.of("Authorization"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);
 

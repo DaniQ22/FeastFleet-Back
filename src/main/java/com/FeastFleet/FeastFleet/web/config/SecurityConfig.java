@@ -34,10 +34,10 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable).cors((cors) -> cors.configurationSource(corsConfig.corsConfigurationSource()))
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
+                .authorizeHttpRequests((authorizationManagerRequestMatcherRegistry) ->
                         authorizationManagerRequestMatcherRegistry
-                                .requestMatchers("/api/users/**","Preference/**", "Role/**", "/Review/**","/api/reservation/**", "/api/restaurant/**", "/api/reservationconfirmed", "/api/gpt3/**", "/api/category/**").permitAll())
-                               // .requestMatchers("/api/auth/**").permitAll())
+                              // .requestMatchers("/api/users/**","Preference/**", "Role/**", "/Review/**","/api/reservation/**", "/api/restaurant/**", "/api/reservationconfirmed", "/api/gpt3/**", "/api/category/**").permitAll())
+                                .requestMatchers("/api/auth/**").permitAll())
 
 
         ;
