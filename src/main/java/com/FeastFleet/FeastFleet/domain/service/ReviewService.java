@@ -31,6 +31,11 @@ public class ReviewService implements ReviewServiceInter{
     }
 
     @Override
+    public List<Review> getAllReview() {
+        return repository.getAllReview();
+    }
+
+    @Override
     public Review save(Review review) {
         Optional<Restaurant> restaurant = restaurantRepository.getById(review.getRestaurantId());
         if (restaurant.isEmpty()){
@@ -51,10 +56,15 @@ public class ReviewService implements ReviewServiceInter{
     public void delete(Integer reviewId) {
         Optional<Review> reviewToDelete = getById(reviewId);
 
-        if (reviewToDelete.isEmpty()){
+        if (reviewToDelete.isPresent()){
             repository.delete(reviewId);
         }else {
             throw new MessageException("La reseña no existe");
         }
+    }
+
+    @Override
+    public List<Review> getReviewByCustomer(String customerId) {
+        return repository.getreviewByCustomer(customerId);
     }
 }

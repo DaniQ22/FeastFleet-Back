@@ -31,6 +31,12 @@ public class ReviewRepository implements ReviewRepositoryInter {
     }
 
     @Override
+    public List<Review> getAllReview() {
+        List<Resena> resenaList  = crud.findAll();
+        return mapper.toReview(resenaList);
+    }
+
+    @Override
     public Review save(Review review) {
         Resena resena = mapper.toResena(review);
         return mapper.toReviwe(crud.save(resena));
@@ -46,5 +52,13 @@ public class ReviewRepository implements ReviewRepositoryInter {
     public void delete(Integer reviewId) {
         crud.deleteById(reviewId);
     }
+
+    @Override
+    public List<Review> getreviewByCustomer(String customerId) {
+        List<Resena> resenas = crud.getReviewByCustimer(customerId);
+        return mapper.toReview(resenas);
+    }
+
+
 
 }

@@ -2,6 +2,7 @@ package com.FeastFleet.FeastFleet.web.controller;
 
 import com.FeastFleet.FeastFleet.domain.dto.Review;
 import com.FeastFleet.FeastFleet.domain.service.ReviewService;
+import com.FeastFleet.FeastFleet.web.message.MessageException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,14 +38,9 @@ public class ReviewController {
     }
 
     @DeleteMapping("/delete/{reviewId}")
-    public ResponseEntity<?> delete(@PathVariable Integer reviewId){
-        try{
-            service.delete(reviewId);
-            return ResponseEntity.status(HttpStatus.OK).body("Reseña eliminada");
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
-
+    public ResponseEntity delete(@PathVariable Integer reviewId){
+        service.delete(reviewId);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/getById/{reviewId}")
@@ -52,4 +48,17 @@ public class ReviewController {
         return new ResponseEntity<>(service.getById(reviewId), HttpStatus.OK);
     }
 
+    @GetMapping("/getAllbyCustomer/{customerId}")
+    public ResponseEntity<?> getReviewByCustomer(@PathVariable String customerId){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(service.getReviewByCustomer(customerId));
+        }catch (MessageException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encuentran reseñas");
+        }
+    }
+
+    @GetMapping("/All")
+    public ResponseEntity<?> getAllReview(){
+        return  ResponseEntity.status(HttpStatus.OK).body(service.getAllReview());
+    }
 }

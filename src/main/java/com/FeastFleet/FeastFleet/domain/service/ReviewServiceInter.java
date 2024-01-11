@@ -10,10 +10,14 @@ public interface ReviewServiceInter {
 
     List<Review> getAll(String restaurantId);
 
+    List<Review> getAllReview();
+
     Review save(Review review);
 
     Optional<Review> getById(Integer reviewId);
 
     void delete(Integer reviewId);
+
+    List<Review> getReviewByCustomer(String customerId);
 
 }

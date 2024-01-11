@@ -12,4 +12,7 @@ public interface ResenaCrud extends ListCrudRepository<Resena, Integer> {
 
     @Query(value = "Select * from resena rese WHERE rese.id_restaurante = :idRestaurante", nativeQuery = true)
     List<Resena> getReviewsByRestaurant(@Param("idRestaurante") String idRestaurante);
+
+    @Query(value = "Select * from resena  rese WHERE rese.id_cliente = :customerId", nativeQuery = true)
+    List<Resena> getReviewByCustimer(@Param("customerId") String customerId);
 }
